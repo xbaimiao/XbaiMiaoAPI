@@ -1,27 +1,36 @@
 package com.xbaimiao.config;
 
-import com.xbaimiao.Main;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class Config {
 
     private final File file;
     private final YamlConfiguration config;
 
-    public Config(String filename){
-        file = new File(Main.instance.getDataFolder(), filename);
-        if(!file.exists()){
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
+    public Config(Plugin plugin , String filename){
+        file = new File(plugin.getDataFolder(), filename);
+        try {
+            File ParentFile = file.getParentFile();
+            if(!ParentFile.exists()){
+                ParentFile.mkdirs();
             }
+            if(!file.exists()){
+                if(file.createNewFile()){
+                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file.getPath()), StandardCharsets.UTF_8));
+                    bw.write("#初始文件");
+                    bw.close();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         config = YamlConfiguration.loadConfiguration(file);
     }
+
     public YamlConfiguration getConfig(){
         return config;
     }
@@ -34,10 +43,6 @@ public class Config {
         return file.delete();
     }
 
-    /**
-     * 保存配置文件
-     * @return 成功为true 失败为false
-     */
     public boolean sava(){
         try {
             config.save(file);

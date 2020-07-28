@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="XbaiMiaoAPI">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="XbaiMiaoAPI.jar">
+      <element id="module-output" name="XbaiMiaoAPI" />
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+    </root>
+  </artifact>
+</component>

@@ -10,13 +10,14 @@ import java.io.IOException
 object Bungees {
 
 	init {
-		if (!Bukkit.getMessenger().isOutgoingChannelRegistered(Main.plugin(), "BungeeCord")) Bukkit.getMessenger().
-		registerOutgoingPluginChannel(Main.plugin(), "BungeeCord")
+		if (!Bukkit.getMessenger().isOutgoingChannelRegistered(Main.plugin(), "BungeeCord")){
+			Bukkit.getMessenger().registerOutgoingPluginChannel(Main.plugin(), "BungeeCord")
+		}
 	}
 
 	fun connect(player: Player, server: String) = sendBungeeData(player, "Connect", server)
 
-	fun sendBungeeData(player: Player, vararg args: String) {
+	private fun sendBungeeData(player: Player, vararg args: String) {
 		val byteArray = ByteArrayOutputStream()
 		val out = DataOutputStream(byteArray)
 		for (arg in args) {

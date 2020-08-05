@@ -15,6 +15,7 @@ object Bungees {
 		}
 	}
 
+	@JvmStatic
 	fun connect(player: Player, server: String) = sendBungeeData(player, "Connect", server)
 
 	private fun sendBungeeData(player: Player, vararg args: String) {

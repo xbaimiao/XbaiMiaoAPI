@@ -11,15 +11,15 @@ public class Config {
     private final File file;
     private final YamlConfiguration config;
 
-    public Config(Plugin plugin , String filename){
+    public Config(Plugin plugin, String filename) {
         file = new File(plugin.getDataFolder(), filename);
         try {
             File ParentFile = file.getParentFile();
-            if(!ParentFile.exists()){
+            if (!ParentFile.exists()) {
                 ParentFile.mkdirs();
             }
-            if(!file.exists()){
-                if(file.createNewFile()){
+            if (!file.exists()) {
+                if (file.createNewFile()) {
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file.getPath()), StandardCharsets.UTF_8));
                     bw.write("#初始文件");
                     bw.close();
@@ -31,19 +31,19 @@ public class Config {
         config = YamlConfiguration.loadConfiguration(file);
     }
 
-    public YamlConfiguration getConfig(){
+    public YamlConfiguration getConfig() {
         return config;
     }
 
-    public File getFile(){
+    public File getFile() {
         return file;
     }
 
-    public boolean remove(){
+    public boolean remove() {
         return file.delete();
     }
 
-    public boolean sava(){
+    public boolean sava() {
         try {
             config.save(file);
             return true;

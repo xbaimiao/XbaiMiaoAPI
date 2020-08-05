@@ -8,17 +8,20 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.List;
+import java.util.UUID;
 
 public class Base64Head {
 
     private ItemStack item;
     private ItemMeta meta;
-    public Base64Head(String base64){
+
+    public Base64Head(String base64) {
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1);
-        SkullMeta skullmate = (SkullMeta)skull.getItemMeta(); assert skullmate != null;
+        SkullMeta skullmate = (SkullMeta) skull.getItemMeta();
+        assert skullmate != null;
         GameProfile profile = new GameProfile(UUID.randomUUID(), null);
-        profile.getProperties().put("textures",new Property("textures",base64));
+        profile.getProperties().put("textures", new Property("textures", base64));
         try {
             Field field = skullmate.getClass().getDeclaredField("profile");
             field.setAccessible(true);
@@ -34,11 +37,13 @@ public class Base64Head {
     public ItemStack getHead() {
         return item;
     }
-    public void setHeadName(String name){
+
+    public void setHeadName(String name) {
         meta.setDisplayName(name);
         item.setItemMeta(meta);
     }
-    public void setHeadLore(List<String> list){
+
+    public void setHeadLore(List<String> list) {
         meta.setLore(list);
         item.setItemMeta(meta);
     }

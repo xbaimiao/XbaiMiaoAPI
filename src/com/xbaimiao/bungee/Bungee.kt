@@ -7,7 +7,7 @@ import java.io.ByteArrayOutputStream
 import java.io.DataOutputStream
 import java.io.IOException
 
-object Bungees {
+object Bungee {
 
 	init {
 		if (!Bukkit.getMessenger().isOutgoingChannelRegistered(Main.plugin(), "BungeeCord")){

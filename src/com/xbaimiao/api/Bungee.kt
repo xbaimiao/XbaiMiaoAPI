@@ -1,4 +1,4 @@
-package com.xbaimiao.bungee
+package com.xbaimiao.api
 
 import com.xbaimiao.Main
 import org.bukkit.Bukkit

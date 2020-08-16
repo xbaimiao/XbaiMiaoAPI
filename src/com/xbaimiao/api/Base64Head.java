@@ -1,4 +1,4 @@
-package com.xbaimiao.head;
+package com.xbaimiao.api;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;

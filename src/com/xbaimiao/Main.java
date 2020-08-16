@@ -16,7 +16,10 @@ public class Main extends JavaPlugin implements Listener {
         saveDefaultConfig();
         instance = this;
         Bukkit.getPluginManager().registerEvents(this,this);
+
     }
+
+
 //
 //    @EventHandler
 //    public void test(@NotNull PlayerChatEvent event){
